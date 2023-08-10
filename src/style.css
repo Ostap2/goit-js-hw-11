@@ -1,0 +1,228 @@
+.search-form {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+    background: #82bcce;
+    background: linear-gradient(to bottom, #82bcce 0%, #1c6ea4 0%, #82bcce 100%);
+  
+    width: 100%;
+  
+    padding-top: 10px;
+    padding-bottom: 10px;
+  
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  input[type='text'] {
+    width: 300px;
+    height: 50px;
+  
+    font-size: 20px;
+  
+    outline: none;
+    border: none;
+    border-radius: 5px;
+  
+    padding-left: 15px;
+  }
+  
+  @media screen and (min-width: 650px) {
+    input[type='text'] {
+      width: 350px;
+    }
+  }
+  
+  button[type='submit'] {
+    width: 80px;
+    height: 50px;
+  
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    background-color: #2373a9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border: 2px #216b9dcb solid;
+    transform: scale(1) 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform;
+  
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+  
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+  }
+  
+  button[type='submit']:hover {
+    transform: scale(1.05);
+  }
+  
+  .gallery {
+    position: absolute;
+    right: 0;
+    left: 0;
+  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+  
+    min-width: 320px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 75px;
+  }
+  
+  @media screen and (min-width: 650px) {
+    .gallery {
+      width: 760px;
+    }
+  }
+  
+  @media screen and (min-width: 1310px) {
+    .gallery {
+      width: 1440px;
+    }
+  }
+  
+  .photo-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  
+    width: 100%;
+    height: 360px;
+  
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    overflow: hidden;
+  
+    margin: 0;
+  }
+  
+  .photo {
+    display: block;
+  
+    width: 100%;
+    height: 290px;
+  
+    object-fit: cover;
+  }
+  
+  .info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  
+    width: 100%;
+    height: 70px;
+    padding: 0 5px 0 5px;
+  }
+  
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  
+    padding: 0 5px 0 5px;
+  }
+  
+  @media screen and (min-width: 650px) {
+    .photo-card {
+      flex-basis: calc((100% - 4 * 10px) / 2);
+      width: 100%;
+    }
+  }
+  
+  @media screen and (min-width: 1310px) {
+    .photo-card {
+      flex-basis: calc((100% - 8 * 10px) / 4);
+    }
+  }
+  
+  .footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    width: 100%;
+  
+    box-shadow: -3px 0px 5px 2px rgba(0, 0, 0, 0.75);
+  
+    background: #82bcce;
+    background: linear-gradient(
+      to bottom,
+      #82bcce 0%,
+      #1c6ea4 100%,
+      #82bcce 100%
+    );
+  
+    transform: translateY(75px);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+  
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .open {
+    transform: translateY(0);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+  }
+  
+  .message {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+  
+    width: 300px;
+    padding: 0;
+    margin-left: auto;
+  }
+  @media screen and (min-width: 650px) {
+    .message {
+      width: 350px;
+    }
+  }
+  
+  .load-more {
+    width: 80px;
+    height: 50px;
+  
+    font-size: 16px;
+    font-weight: 400;
+  
+    color: white;
+    background-color: #2373a9;
+    border: 2px #216b9dcb solid;
+    transform: scale(1) 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform;
+  
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+  
+    padding-top: 0;
+    margin-right: auto;
+    margin-left: 10px;
+  }
+  
+  .load-more:hover {
+    transform: scale(1.05);
+  }
