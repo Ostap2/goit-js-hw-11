@@ -190,16 +190,17 @@
     font-weight: 500;
     color: white;
     text-align: center;
-  
     width: 300px;
     padding: 0;
     margin-left: auto;
-  }
-  @media screen and (min-width: 650px) {
+    background-color: #ff6347;
+}
+
+@media screen and (min-width: 650px) {
     .message {
-      width: 350px;
+        width: 350px;
     }
-  }
+}
   
   .load-more {
     width: 80px;
