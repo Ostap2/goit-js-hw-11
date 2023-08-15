@@ -133,8 +133,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-  
-    padding: 0 5px 0 5px;
   }
   
   @media screen and (min-width: 650px) {
