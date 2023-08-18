@@ -14,7 +14,7 @@ const gallery = document.querySelector('.gallery');
 let word = '';
 let perPage = 40;
 let page = 1;
-let counterHits = 0;
+let totalPages = 0;
 
 function handleForm(evt) {
     evt.preventDefault();
@@ -22,37 +22,43 @@ function handleForm(evt) {
 
     const data = new FormData(evt.currentTarget);
     word = data.get("searchQuery").trim();
-    console.log(word);
 
-    loadGallery(word, page);
+    if (word !== '') {
+        loadGallery(word, page);
+    } else {
+        Notify.warning('Please enter a search query.', notifyInit);
+    }
 }
 
 function resetGallery() {
     gallery.innerHTML = '';
     page = 1;
-    counterHits = perPage;
+    totalPages = 0;
     document.querySelector('.footer').classList.remove('open');
     document.querySelector('.message').textContent = '';
+    btnLoadMore.style.opacity = 0;
 }
 
 async function loadGallery(searchWord, pageNumber) {
     try {
         const data = await getGallery(searchWord, pageNumber);
+        totalPages = Math.ceil(data.totalHits / perPage);
 
-        if (data.total === 0) {
-            Notify.warning('Sorry, there are no images matching your search query. Please try again.', notifyInit);
+        if (page === 1) {
+            document.querySelector('.footer').classList.remove('open');
+            btnLoadMore.style.opacity = 0;
+        }
+
+        const arr = data.hits;
+        createMarkup(arr);
+
+        if (page < totalPages) {
+            document.querySelector('.footer').classList.add('open');
+            btnLoadMore.style.opacity = 1;
+            document.querySelector('.message').textContent = `Hooray! We found ${data.totalHits} images.`;
         } else {
-            const arr = data.hits;
-            createMarkup(arr); 
-
-            if (arr.length < data.totalHits) {
-                setTimeout(() => {
-                    document.querySelector('.footer').classList.add('open');
-                    btnLoadMore.style.opacity = 1;
-                    document.querySelector('.message').textContent = `Hooray! We found ${data.totalHits} images.`;
-                    formSearch.reset();
-                }, 3000);
-            }
+            document.querySelector('.footer').classList.remove('open');
+            btnLoadMore.style.opacity = 0;
         }
     } catch (error) {
         console.log(error);
@@ -63,6 +69,7 @@ function onLoad() {
     page += 1;
     loadGallery(word, page);
 }
+
 
 
 resetGallery();
